@@ -18,11 +18,16 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%#= task.name %>
-        <%= best_in_place task, :name, :as => :textarea %> </td>
-        <td><%= task.priority %></td>
-        <td><%= task.description %></td>
-        <td><%= task.status %></td>
-        <td><%= task.deadline %></td>
+            <%= best_in_place task, :name, :as => :input %> </td>
+        <td><%#= task.priority %>
+            <%= best_in_place task, :priority, :as => :select, :collection => ['低', '中', '高'] %> </td>
+        <td><%#= task.description %>
+            <%= best_in_place task, :description, :as => :textarea %> </td>
+        <td><%#= task.status %>
+            <%= best_in_place task, :status, :as => :select, :collection => ['未着手', '着手中', '完了'] %> </td>
+        <td><%#= task.deadline %>
+            <%= best_in_place task, :deadline, :as => :date %> </td>
+
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, 
